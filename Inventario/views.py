@@ -1,9 +1,11 @@
-from django.shortcuts import render
-from django.views.generic import ListView,CreateView,DetailView,UpdateView,DeleteView
-
+from django.shortcuts import redirect, render
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 from Gestion.models import Categoria
-from .models import Producto
+from carrito.carrito import Carrito
 from .forms import productoForm
+from .models import Producto
+
 # Create your views here.
 
 #Gestion de Productos
@@ -47,7 +49,7 @@ class ProductoUpdate(UpdateView):
         'proveedor',
         'marca',
     ]
-    template_name = "Producto/create.html"
+    template_name = "Producto/update.html"
     success_url= '/inventario/producto/detalles/{id}/'
 
 class ProductoDetail(DetailView):
@@ -59,3 +61,27 @@ class ProductoDelete(DeleteView):
     model = Producto
     template_name = "Producto/delete.html"
     success_url= '/inventario/producto/'
+
+
+def agregar_carrito(request,pk):
+    producto = Producto.objects.get(id=pk)
+    carrito = Carrito(request)
+    carrito.add(producto)
+    return redirect('/inventario/producto/')
+
+def eliminar_producto(request,pk):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=pk)
+    carrito.remove(producto)
+    return redirect("Inventario:productoIndex")
+
+def restar_producto(request,pk):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=pk)
+    carrito.decrement(producto)
+    return redirect('/inventario/producto/')
+
+def limpiar(request):
+    carrito = Carrito(request)
+    carrito.clear()
+    return redirect("/inventario/producto/")

@@ -12,4 +12,13 @@ urlpatterns = [
     path('producto/actualizar/<pk>/',v.ProductoUpdate.as_view(),name="productoEditar"),
     path('producto/eliminar/<pk>/',v.ProductoDelete.as_view(),name="productoEliminar"),
 
+    #carrito
+    path('agregar/<pk>/',v.agregar_carrito,name="add"),
+    path('eliminar/<pk>/',v.eliminar_producto,name="del"),
+    path('restar/<pk>/',v.restar_producto,name="remove"),
+    path('limpiar/',v.limpiar,name="cls"),
+
+
+
+
 ]

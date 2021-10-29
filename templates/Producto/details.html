@@ -49,7 +49,7 @@
                
                 <a class="btn btn-primary" href="{% url 'Inventario:productoIndex' %}">Atrás</a>
                 <a class="btn btn-success" href="{% url 'gestion:categoriaDetalle' object.categoria %}">Productos Relacionados</a>
-                <a class="btn btn-warning" href="{% url 'Inventario:productoEditar' object.nombre %}">Editar</a>
+                <a class="btn btn-warning" href="{% url 'Inventario:productoEditar' object.id %}">Editar</a>
                 <a class="btn btn-danger" href="{% url 'Inventario:productoEliminar' object.id %}">Borrar</a>
         {%endif%}
     </div>

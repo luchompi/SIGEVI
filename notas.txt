@@ -23,3 +23,7 @@ Ver. 0.0.2
 2. Añadida Gestion de Marcas, ahora puede añadirse, actualizarse y eliminarse una marca, aparte de consultar una marca
 3. Añadida Gestion de Categorias, ahora puede añadirse, actualizarse y eliminarse una categoria, aparte de consultar una en especifico
 4. Añadida Gestion de Productos, ahora se pueden añadir, actualizar, eliminar y consultar.
+
+
+Ver 0.0.3
+1. Ahora se implementa carrito de compras, se puede añadir y eliminar productos en el, y el carrito indica el total de la compra

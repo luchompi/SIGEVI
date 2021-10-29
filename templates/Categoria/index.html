@@ -1,0 +1,68 @@
+{% extends "base/body.html" %}
+
+{% block title %}
+Categorías
+    
+{% endblock title %}
+
+
+{% block header %}
+    <h1>Listado General de Categorías</h1>
+{% endblock header %}
+    
+
+{% block content %}
+    {% if query %}
+    <div class="container-fluid">
+            <div>
+                <form method="get">
+                <p>Para Buscar una Categoría en específico, digite su nombre en la caja de texto y presione el boton buscar <input type="text" name="categoria" > <input type="submit" value="buscar">
+                </p>
+                </form>
+            </div>
+        <hr class="dropdown-divider">
+    </div>
+
+
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Categoría</th>
+
+                    
+                    <th scope="col">Opciones</th>        
+                </tr>
+                </thead>
+                <tbody>  
+                    {% for row in query %}
+                    <tr>
+                        <td>{{row.id}}</td>
+                        <td>{{row.nombre}}</td>
+                        
+                        <td><a class="btn btn-info" href="{% url 'gestion:categoriaDetalle' row.id %}">Info
+                        <a class="btn btn-warning" href="{% url 'gestion:categoriaEditar' row.id %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url 'gestion:categoriaEliminar' row.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    {% else %}
+    <div class="container-fluid">
+        <div>
+            <form method="get">
+            <p>Para Buscar una Categoría en específico, digite su identificacion en la caja de texto y presione el boton buscar <input type="text" name="Categoría" > <input type="submit" value="buscar">
+            </p>
+            </form>
+        </div>
+    <hr class="dropdown-divider">
+</div>   
+        <p>No hay registros!, intente con otra marca o revise que esté bien escrita</p>
+            <a class="btn btn-primary" href="{% url 'gestion:marcaIndex' %}">Volver Atrás</a>
+    {% endif %}
+            
+
+    
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "base/body.html" %}
+{%load bootstrap5%}
+{%bootstrap_css%}
+{% load bootstrap_icons %}
+
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<p>Sistema de Gestión de Ventas e Inventario SIGEVI</p>    
+{% endif %}
+    
+{% endblock content %}

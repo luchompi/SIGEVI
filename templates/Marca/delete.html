@@ -1,0 +1,71 @@
+{% extends 'base/body.html' %}
+
+
+{% block title %}
+    Gestión de Marcas
+{% endblock title %}
+
+
+    
+
+{%block header%}
+ 
+    {% if user.is_authenticated %}
+        <div class="container-fluid">
+            <h1>Detalles de la Marca {{object.nombre}}</h1>
+            <hr class="dropdown-divider">
+        </div>
+        {%else%}
+
+
+    {%endif%}
+{%endblock header%}
+
+{%block content%}
+
+    {% if user.is_authenticated %}
+    <form method="POST">
+		{%csrf_token%}
+		<h3>Se van a eliminar los registros de {{object.nombre}} y sus registros conexos, ¿Continuar?</h3>
+        <div class="container-fluid">
+            {%if object%}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">NIT</th>
+                        <th scope="col">Razón Social</th>
+                        <th scope="col">Direccion Principal</th>
+                        <th scope="col">Direccion de Punto de Venta</th>
+                        <th scope="col">Teléfono</th>     
+                        <th scope="col">Correo Electronico</th>      
+                    </tr>
+                    </thead>
+                    <tbody>  
+                        <tr>
+                            <th scope="row">{{object.NIT}}</th>
+                            <td>{{object.razonSocial}}</td>
+                            <td>{{object.direccionEmpresa}}</td>
+                            <td>{{object.direccionVenta}}</td>
+                            <td>{{object.telefono}}</td>
+                            <td>{{object.correo}}</td>
+                        </tr>
+                    </tbody>
+            </table>
+        {%endif%}
+    </div>
+
+    {%else%}
+
+    <p>Inicie Sesión para poder ver estos Datos dando clic<strong><a href="/auth/login"> aquí</a></strong></p>
+
+    {%endif%}
+		    <td>
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <a class="btn btn-primary" href="{% url 'gestion:marcaIndex' %}">Cancelar y Regresar a Listado General</a>
+	</form>
+
+    
+
+        
+{%endblock content%}
+

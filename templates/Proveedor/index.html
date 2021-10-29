@@ -1,0 +1,65 @@
+{% extends "base/body.html" %}
+
+{% block title %}
+Listado General de Proveedores
+    
+{% endblock title %}
+
+
+{% block header %}
+    <h1>Listado General de Proveedores</h1>
+{% endblock header %}
+    
+
+{% block content %}
+    {% if query %}
+    <div class="container-fluid">
+            <div>
+                <form method="get">
+                <p>Para Buscar un Proveedor en específico, digite su identificacion en la caja de texto y presione el boton buscar <input type="text" name="NIT" > <input type="submit" value="buscar">
+                </p>
+                </form>
+            </div>
+        <hr class="dropdown-divider">
+    </div>
+
+
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">NIT</th>
+                    <th scope="col">Razón Social</th>
+                    
+                    <th scope="col">Opciones</th>        
+                </tr>
+                </thead>
+                <tbody>  
+                    {% for row in query %}
+                    <tr>
+                        <th scope="row">{{row.NIT}}</th>
+                        <td>{{row.razonSocial}}</td>
+                        
+                        <td><a class="btn btn-info" href="{% url 'personas:proveedoresDetalles' row.NIT %}">Info</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    {% else %}
+    <div class="container-fluid">
+        <div>
+            <form method="get">
+            <p>Para Buscar un Proveedor en específico, digite su identificacion en la caja de texto y presione el boton buscar <input type="text" name="NIT" > <input type="submit" value="buscar">
+            </p>
+            </form>
+        </div>
+    <hr class="dropdown-divider">
+</div>   
+        <p>No hay registros!, intente con otra identificación o revise que esté bien escrita</p>
+            <a class="btn btn-primary" href="/personas/proveedores/">Volver Atrás</a>
+    {% endif %}
+            
+
+    
+{% endblock content %}

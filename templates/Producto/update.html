@@ -1,0 +1,42 @@
+{% extends 'base/body.html' %}
+
+
+
+{% block title %}
+    Gestión de Productos
+{% endblock title %}
+
+
+
+{%block header%}
+    {% if user.is_authenticated %}
+    <div class="container-fluid">
+        <h1>Formulario de Actualizacion de Producto</h1>
+    </div>
+    {%else%}
+    {%endif%}
+{%endblock header%}
+
+{% block content %}
+<div class="container">
+{% if user.is_authenticated %}
+    {%load crispy_forms_tags%}
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-8">
+            <form method="post">
+                {% csrf_token %}
+                {{form|crispy}}
+                <td><a class="btn btn-info" href="#">Regresar a Detalles</a>
+                <button class="btn btn-primary" type="submit">Actualizar</button>
+                <a class="btn btn-danger" href="#">Cancelar y Regresar a Listado General</a>
+            </form>
+        </div>
+    </div>
+{% else %}
+<h1>inicie sesion para continuar</h1>
+{% endif %}
+</div>
+{% endblock content %}
+
+
+    

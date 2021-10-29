@@ -1,0 +1,40 @@
+{% extends 'base/body.html' %}
+
+
+
+{% block title %}
+    Gestión de Categorías
+{% endblock title %}
+
+
+
+{%block header%}
+    {% if user.is_authenticated %}
+    <div class="container-fluid">
+        <h1>Formulario de Actualizacion de Categoría</h1>
+    </div>
+    {%endif%}
+{%endblock header%}
+
+{% block content %}
+<div class="container">
+{% if user.is_authenticated %}
+    {%load crispy_forms_tags%}
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-8">
+            <form method="post">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button class="btn btn-primary" type="submit">Actualizar</button>
+                <a class="btn btn-danger" href="{% url 'gestion:categoriaIndex' %}">Cancelar y Regresar a Listado General</a>
+            </form>
+        </div>
+    </div>
+{% else %}
+<h1>inicie sesion para continuar</h1>
+{% endif %}
+</div>
+{% endblock content %}
+
+
+    

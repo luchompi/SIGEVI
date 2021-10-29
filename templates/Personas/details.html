@@ -1,0 +1,63 @@
+{% extends 'base/body.html' %}
+
+
+{% block title %}
+    Gestión de Clientes
+{% endblock title %}
+
+
+    
+
+{%block header%}
+ 
+    {% if user.is_authenticated %}
+        <div class="container-fluid">
+            <h1>Detalles de Cliente {{object.nombre}} {{object.apellido}}</h1>
+            <hr class="dropdown-divider">
+        </div>
+    {%endif%}
+{%endblock header%}
+
+{%block content%}
+
+    {% if user.is_authenticated %}
+
+        <div class="container-fluid">
+            {%if object%}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Identificación</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Teléfono</th>     
+                    <th scope="col">Correo Electronico</th>      
+                </tr>
+                </thead>
+                <tbody>  
+                    <tr>
+                        <th scope="row">{{object.identificacion}}</th>
+                        <td>{{object.nombre}}</td>
+                        <td>{{object.apellido}}</td>
+                        <td>{{object.direccion}}</td>
+                        <td>{{object.telefono}}</td>
+                        <td>{{object.correo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+               
+                <a class="btn btn-primary" href="/personas/clientes/">Atrás</a>
+                <a class="btn btn-warning" href="{% url 'personas:clientesActualizar' object.identificacion %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'personas:clientesEliminar' object.identificacion %}">Borrar</a>
+        {%endif%}
+    </div>
+
+    {%else%}
+
+    {% include 'base/login_info.html' %}
+
+    {%endif%}
+    
+{%endblock content%}
+

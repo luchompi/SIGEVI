@@ -1,0 +1,64 @@
+{% extends 'base/body.html' %}
+
+
+{% block title %}
+    Gestión de Productos
+{% endblock title %}
+
+
+    
+
+{%block header%}
+ 
+    {% if user.is_authenticated %}
+        <div class="container-fluid">
+            <h1>Detalles de Producto {{query.nombre}}</h1>
+            <hr class="dropdown-divider">
+        </div>
+    {%endif%}
+{%endblock header%}
+
+{%block content%}
+
+    {% if user.is_authenticated %}
+
+        <div class="container-fluid">
+            {%if object%}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio de compra</th>
+                    <th scope="col">Proveedor</th>     
+                    <th scope="col">Marca</th>    
+                </tr>
+                </thead>
+                <tbody>  
+                    <tr>
+                        <th scope="row">{{object.id}}</th>
+                        <td>{{object.nombre}}</td>
+                        <td>{{object.cantidad}}</td>
+                        <td>{{object.uniades}}</td>
+                        <td>{{object.precio_compra}}</td>
+                        <td>{{object.marca}}</td>
+                    </tr>
+                </tbody>
+            </table>
+               
+                <a class="btn btn-primary" href="{% url 'Inventario:productoIndex' %}">Atrás</a>
+                <a class="btn btn-success" href="{% url 'gestion:categoriaDetalle' object.categoria %}">Productos Relacionados</a>
+                <a class="btn btn-warning" href="{% url 'Inventario:productoEditar' object.nombre %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'Inventario:productoEliminar' object.id %}">Borrar</a>
+        {%endif%}
+    </div>
+
+    {%else%}
+
+    {% include 'base/login_info.html' %}
+
+    {%endif%}
+    
+{%endblock content%}
+

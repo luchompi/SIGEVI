@@ -1,0 +1,63 @@
+{% extends 'base/body.html' %}
+
+
+{% block title %}
+    Gestión de Proveedores
+{% endblock title %}
+
+
+    
+
+{%block header%}
+ 
+    {% if user.is_authenticated %}
+        <div class="container-fluid">
+            <h1>Detalles de Proveedor {{object.razonSocial}}</h1>
+            <hr class="dropdown-divider">
+        </div>
+    {%endif%}
+{%endblock header%}
+
+{%block content%}
+
+    {% if user.is_authenticated %}
+
+        <div class="container-fluid">
+            {%if object%}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">NIT</th>
+                    <th scope="col">Razón Social</th>
+                    <th scope="col">Direccion Principal</th>
+                    <th scope="col">Direccion de Punto de Venta</th>
+                    <th scope="col">Teléfono</th>     
+                    <th scope="col">Correo Electronico</th>      
+                </tr>
+                </thead>
+                <tbody>  
+                    <tr>
+                        <th scope="row">{{object.NIT}}</th>
+                        <td>{{object.razonSocial}}</td>
+                        <td>{{object.direccionEmpresa}}</td>
+                        <td>{{object.direccionVenta}}</td>
+                        <td>{{object.telefono}}</td>
+                        <td>{{object.correo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+               
+                <a class="btn btn-primary" href="/personas/proveedores/">Atrás</a>
+                <a class="btn btn-warning" href="{% url 'personas:proveedoresActualizar' object.NIT %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'personas:proveedoresEliminar' object.NIT %}">Borrar</a>
+        {%endif%}
+    </div>
+
+    {%else%}
+
+    {% include 'base/login_info.html' %}
+
+    {%endif%}
+    
+{%endblock content%}
+

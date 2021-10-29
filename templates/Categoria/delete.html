@@ -1,0 +1,63 @@
+{% extends 'base/body.html' %}
+
+
+{% block title %}
+    Gestión de Categorías
+{% endblock title %}
+
+
+    
+
+{%block header%}
+ 
+    {% if user.is_authenticated %}
+        <div class="container-fluid">
+            <h1>Detalles de Categoría {{object.nombre}} </h1>
+            <hr class="dropdown-divider">
+        </div>
+        {%else%}
+
+
+    {%endif%}
+{%endblock header%}
+
+{%block content%}
+
+    {% if user.is_authenticated %}
+    <form method="POST">
+		{%csrf_token%}
+		<h3>Se van a eliminar los registros de {{object.nombre}}, ¿Continuar?</h3>
+        <div class="container-fluid">
+            {%if object%}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>    
+                    </tr>
+                    </thead>
+                    <tbody>  
+                        <tr>
+                            <th scope="row">{{object.id}}</th>
+                            <td>{{object.nombre}}</td>
+                        </tr>
+                    </tbody>
+            </table>
+        {%endif%}
+    </div>
+
+    {%else%}
+
+    <p>Inicie Sesión para poder ver estos Datos dando clic<strong><a href="/auth/login"> aquí</a></strong></p>
+
+    {%endif%}
+		    <td>
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <a class="btn btn-primary" href="{% url 'gestion:categoriaIndex' %}">Cancelar y Regresar a Listado General</a>
+	</form>
+
+    
+
+        
+{%endblock content%}
+

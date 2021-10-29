@@ -1,0 +1,30 @@
+{% extends 'base/body.html' %}
+
+{%block header%}
+    {% if user.is_authenticated %}
+    <div class="container-fluid">
+        <h1>Formulario de Inserción de Producto Nuevo</h1>
+    </div>
+    {%endif%}
+{%endblock header%}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {%load crispy_forms_tags%}
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-8">
+            <form method="post">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button class="btn btn-success" type="submit">Guardar</button>
+                <a class="btn btn-danger" href="{% url 'Inventario:productoIndex' %}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+{% else %}
+{% include 'base/login_info.html' %}
+{% endif %}
+{% endblock content %}
+
+
+    

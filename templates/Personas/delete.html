@@ -1,0 +1,73 @@
+{% extends 'base/body.html' %}
+
+
+{% block title %}
+    Gestión de Funcionarios
+{% endblock title %}
+
+
+    
+
+{%block header%}
+ 
+    {% if user.is_authenticated %}
+        <div class="container-fluid">
+            <h1>Detalles de Cliente {{object.nombre}} {{object.apellido}}</h1>
+            <hr class="dropdown-divider">
+        </div>
+        {%else%}
+
+
+    {%endif%}
+{%endblock header%}
+
+{%block content%}
+
+    {% if user.is_authenticated %}
+    <form method="POST">
+		{%csrf_token%}
+		<h3>Se van a eliminar los registros de {{object.nombre}} {{object.apellido}} identificado con ID {{object.identificacion}}, ¿Continuar?</h3>
+        <div class="container-fluid">
+            {%if object%}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Identificación</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Teléfono</th>     
+                    <th scope="col">Correo Electronico</th>      
+
+
+                </tr>
+                </thead>
+                <tbody>  
+                    <tr>
+                        <th scope="row">{{object.identificacion}}</th>
+                        <td>{{object.nombre}}</td>
+                        <td>{{object.apellido}}</td>
+                        <td>{{object.direccion}}</td>
+                        <td>{{object.telefono}}</td>
+                        <td>{{object.correo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {%endif%}
+    </div>
+
+    {%else%}
+
+    <p>Inicie Sesión para poder ver estos Datos dando clic<strong><a href="/auth/login"> aquí</a></strong></p>
+
+    {%endif%}
+		    <td><a class="btn btn-info" href="{% url 'personas:clientesDetalles' object.identificacion %}">Regresar a Detalles</a>
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <a class="btn btn-primary" href="/personas/clientes/">Cancelar y Regresar a Listado General</a>
+	</form>
+
+    
+
+        
+{%endblock content%}
+

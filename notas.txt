@@ -1,0 +1,25 @@
+
+NOTAS DE LA VERSION:
+
+Paquetes necesarios:
+django
+django-bootstrap-v5
+django-bootstrap5
+django-bootstrap-icons
+django-crispy-forms
+crispy-bootstrap5
+pylint
+
+Ver. 0.0.1
+1. Añadida representacion de datos de las tablas clientes y Proveedores
+2. Habilitada Gestion de Clientes, ahora se puede Crear, Consultar, Actualizar y Eliminar Datos de un clientes
+3. Ahora, se pueden consultar los clientes desde el listado general solo escribiendo su ID y dando clic en buscar
+4. Ahora, se pueden consultar los proveedores desde el listado general solo escribiendo su id, agregarlos, actualizarlos y eliminarlos
+
+
+
+Ver. 0.0.2
+1. Añadida la representacion de datos de Marca, Categoría y Productos
+2. Añadida Gestion de Marcas, ahora puede añadirse, actualizarse y eliminarse una marca, aparte de consultar una marca
+3. Añadida Gestion de Categorias, ahora puede añadirse, actualizarse y eliminarse una categoria, aparte de consultar una en especifico
+4. Añadida Gestion de Productos, ahora se pueden añadir, actualizar, eliminar y consultar.

@@ -1,0 +1,68 @@
+{% extends 'base/body.html' %}
+
+
+{% block title %}
+    Gestión de Categoría
+{% endblock title %}
+
+
+    
+
+{%block header%}
+ 
+    {% if user.is_authenticated %}
+        <div class="container-fluid">
+            <h1>Productos Relacionados</h1>
+            <hr class="dropdown-divider">
+        </div>
+    {%endif%}
+{%endblock header%}
+
+{%block content%}
+
+    {% if user.is_authenticated %}
+        
+        <div class="container-fluid">
+            {%if query1%}
+            <h3>Estos son todos los elementos que quizás puedan buscar</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                 
+                    <th scope="col">Marca</th>    
+                </tr>
+                </thead>
+                <tbody>  
+                    
+                    {% for row in query1  %}
+                    <tr>
+                        <th scope="row">{{row.id}}</th>
+                        <td>{{row.nombre}}</td>
+                        <td>{{row.cantidad}}</td>
+                        <td>{{row.precio_compra}}</td>
+                        
+                        <td>{{row.marca}}</td>
+                        
+                    </tr>
+                    {% endfor %}
+                        
+                    
+                </tbody>
+            </table>
+               
+               
+        {%endif%}
+    </div>
+
+    {%else%}
+
+    {% include 'base/login_info.html' %}
+
+    {%endif%}
+    
+{%endblock content%}
+

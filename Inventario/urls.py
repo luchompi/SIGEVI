@@ -11,6 +11,8 @@ urlpatterns = [
     path('producto/detalles/<pk>/',v.ProductoDetail.as_view(),name="productoDetalle"),
     path('producto/actualizar/<pk>/',v.ProductoUpdate.as_view(),name="productoEditar"),
     path('producto/eliminar/<pk>/',v.ProductoDelete.as_view(),name="productoEliminar"),
+    path('producto/related/<categoria>/',v.ProductoCategoria,name="productoCategoria"),
+
 
     #carrito
     path('agregar/<pk>/',v.agregar_carrito,name="add"),

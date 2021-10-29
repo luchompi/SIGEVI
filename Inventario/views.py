@@ -20,7 +20,14 @@ class ProductoList(ListView):
         else:
             context["query"] = Producto.objects.all()
         return context
-    
+
+
+def ProductoCategoria(request,categoria):
+    query = Categoria.objects.get(nombre=categoria)
+    query1 = Producto.objects.filter(categoria__id=query.pk)
+    return render(request,'Producto/related.html',context={'query1':query1})
+
+
 
 class ProductoCreate(CreateView):
     model = Producto

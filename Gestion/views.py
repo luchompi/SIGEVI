@@ -73,9 +73,17 @@ class CategoriaUpdate(UpdateView):
 
 
 def CategoriaDetail(request,pk):
-    query = Categoria.objects.get(nombre=pk)
-    query1 = Producto.objects.filter(categoria__nombre=pk)
-    return render(request,'Categoria/details.html',context={'query':query,'query1':query1})
+    query = Categoria.objects.get(id=pk)
+    query1 = Producto.objects.filter(categoria__id=pk)
+    if query:
+        return render(request,'Categoria/details.html',context={'query':query,'query1':query1})
+    else:
+        query = Categoria.objects.get(nombre=query1)
+        return render(request,'Categoria/details.html',context={'query':query,'query1':query1})
+
+
+
+    
     
 
 class CategoriaDelete(DeleteView):

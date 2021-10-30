@@ -28,3 +28,7 @@ Ver. 0.0.2
 Ver 0.0.3
 1. Ahora se implementa carrito de compras, se puede añadir y eliminar productos en el, y el carrito indica el total de la compra
 2. Correccion de errores y mejoras menores
+3. Ahora, las cantidades en carrito de compras se restan de la db
+4. Corregido error de consulta de categoria por producto, ahora al hacer clic en el boton relacionados, el sistema muestra una lista de elementos de la misma categoria
+5. Dependencia nueva requerida : reportlab
+6. Ahora se pueden hacer reportes PDF, por lo que se generan facturas y cotizaciones

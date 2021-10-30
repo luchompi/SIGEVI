@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Personas.apps.PersonasConfig',
     'Gestion.apps.GestionConfig',
     'Inventario.apps.InventarioConfig',
+    'carrito.apps.CarritoConfig',
 ]
 
 MIDDLEWARE = [

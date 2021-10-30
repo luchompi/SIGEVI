@@ -1,3 +1,6 @@
+from Inventario.models import Producto
+
+
 class Carrito:
     def __init__(self,request):
         self.resquest = request
@@ -18,6 +21,7 @@ class Carrito:
                 "precio": producto.precio_compra,
                 "cantidad":1,
                 "acmuluado":producto.precio_compra,
+                "unitario":producto.precio_compra,
             }
         else:
             self.carrito[id]["cantidad"] += 1
@@ -46,6 +50,18 @@ class Carrito:
     def clear(self):
         self.session["carrito"] = {}
         self.session.modified = True
+#pagos
+    def pay(self):
+        for row in self.carrito.keys():
+            ide = self.carrito[row]["producto_id"]
+            object = Producto.objects.get(pk=ide)
+            object.cantidad -= self.carrito[row]["cantidad"]
+            object.save()
+            
+        self.session["carrito"] = {}
+        self.session.modified = True
+   
 
 
-        
+
+

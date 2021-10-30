@@ -5,10 +5,13 @@
 
 <div class="container-fluid">
 <h3>Carrito de compras</h3>
+         
+
 
      {% if request.session.carrito.items %}
          <h5>Total a pagar {{total_carrito}}
-         <a href="#" class="btn btn-success">Hacer Venta{%bs_icon 'check'%}</a>
+         <a href="{% url 'Inventario:pay' %}" class="btn btn-success">Hacer Venta{%bs_icon 'check'%}</a>
+         <a href="{% url 'Inventario:PDF' %}" class="btn btn-success">Crear Cotización{%bs_icon 'check'%}</a>
          <a href="{% url 'Inventario:cls' %}" class="btn btn-danger">Eliminar Carrito{%bs_icon 'cart-x'%}</a>
         </h5>
          <h6>Listado de productos</h6>

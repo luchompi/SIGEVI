@@ -19,8 +19,7 @@ urlpatterns = [
     path('eliminar/<pk>/',v.eliminar_producto,name="del"),
     path('restar/<pk>/',v.restar_producto,name="remove"),
     path('limpiar/',v.limpiar,name="cls"),
-
-
-
+    path('pay/',v.pagar,name="pay"),
+    path('PDF/', v.generar_pdf, name="PDF"),
 
 ]

@@ -38,4 +38,8 @@ Ver 0.0.3
 Ver 0.0.4
 1. Corrección de errores y mejoras en Modulo de Clientes
 2. Correccion de errores y mejores en Modulo de Proveedores
-3. 
+3. Correccion de errores y mejores en Modulo de Marca
+4. Correccion de errores y mejores en Modulo de Categoría
+5. Correccion de errores y mejores en Modulo de Productos
+6. Correccion de errores y mejores en exportación de PDF
+7. Añadido botón "Añadir nuevo" en cada interfaz de listado general

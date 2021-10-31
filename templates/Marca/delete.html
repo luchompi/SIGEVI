@@ -28,11 +28,11 @@
 		{%csrf_token%}
 		<h3>Se van a eliminar los registros de {{object.nombre}} y sus registros conexos, ¿Continuar?</h3>
         <div class="container-fluid">
-            {%if object%}
+            {%if query1%}
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">NIT</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Razón Social</th>
                         <th scope="col">Direccion Principal</th>
                         <th scope="col">Direccion de Punto de Venta</th>
@@ -41,16 +41,23 @@
                     </tr>
                     </thead>
                     <tbody>  
+                        
+                        {% for object in query1 %}
                         <tr>
-                            <th scope="row">{{object.NIT}}</th>
+                            <th scope="row">{{object.categoria}}</th>
                             <td>{{object.razonSocial}}</td>
                             <td>{{object.direccionEmpresa}}</td>
                             <td>{{object.direccionVenta}}</td>
                             <td>{{object.telefono}}</td>
                             <td>{{object.correo}}</td>
                         </tr>
+                            
+                        {% endfor %}
+                            
                     </tbody>
             </table>
+            {% else %}
+            <p>No hay registros conexos</p>
         {%endif%}
     </div>
 

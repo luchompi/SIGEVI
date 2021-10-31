@@ -40,6 +40,13 @@ class MarcaDelete(DeleteView):
     model = Marca
     template_name = "Marca/delete.html"
     success_url = '/gestion/marcas/'
+    def get_context_data(self, **kwargs):
+        query= Marca.objects.get(nombre=self.object)
+        context = super().get_context_data(**kwargs)
+        context["query1"] = Producto.objects.filter(marca__id=query.id)
+        return context
+    
+    
 
 
 class CategoriaList(ListView):

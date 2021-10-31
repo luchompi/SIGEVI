@@ -7,7 +7,7 @@ Marcas
 
 
 {% block header %}
-    <h1>Listado General de Marcas</h1>
+    <h1>Listado General de Marcas <a class="btn btn-success" href="{% url 'gestion:categoriaCrear' %}">Agregar Marca</a></h1>
 {% endblock header %}
     
 
@@ -58,8 +58,11 @@ Marcas
         </div>
     <hr class="dropdown-divider">
 </div>   
-        <p>No hay registros!, intente con otra marca o revise que esté bien escrita</p>
-            <a class="btn btn-primary" href="{% url 'gestion:marcaIndex' %}">Volver Atrás</a>
+        <p>No hay registros!, Esto puede pasar por dos razones:</p>
+        <p>1. No existen coincidencias con los criterios de búsqueda</p>
+        <p>2. No existen Registros o no se ṕuede acceder a ellos</p>
+        <p>Si sigue viendo esta pantalla y no ha realizado ninguna consulta, contacte al proveedor del software para mayor información</p>
+           
     {% endif %}
             
 

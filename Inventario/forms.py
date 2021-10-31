@@ -9,10 +9,10 @@ UNIDADES=[
 ]
 
 class productoForm(forms.Form):
-    categoria=forms.Select(choices=Categoria.objects.all())
+    categoria=forms.ModelChoiceField(queryset=Categoria.objects.all())
     nombre=forms.CharField()
     cantidad=forms.IntegerField()
     uniades = forms.Select(choices=UNIDADES)
     precio_compra = forms.IntegerField()
-    proveedor=forms.Select(choices=Proveedor.objects.all())
-    marca=forms.Select(choices=Marca.objects.all())
+    proveedor=forms.ModelChoiceField(queryset=Proveedor.objects.all())
+    marca=forms.ModelChoiceField(queryset=Marca.objects.all())

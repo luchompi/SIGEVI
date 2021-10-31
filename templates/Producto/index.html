@@ -7,7 +7,7 @@ Productos
 
 
 {% block header %}
-    <h1>Listado General de Productos</h1>
+    <h1>Listado General de Productos  <a class="btn btn-success" href="{% url 'Inventario:productoCrear' %}">Añadir Producto nuevo</a></h1>
 {% endblock header %}
     
 
@@ -44,7 +44,12 @@ Productos
                             <td>{{row.nombre}}</td>
                             <td>{{row.cantidad}}</td>
                             <td>{{row.uniades}}</td>
-                            <td>{{row.marca}}</td>                    
+                             {% if row.marca == None %}
+                            <td>N/A</td>
+                                
+                            {% else %}
+                            <td>{{row.marca}}</td>
+                            {% endif %}                   
                             <td><a class="btn btn-info" href="{% url 'Inventario:productoDetalle' row.id %}">Info</a>
                             <a class="btn btn-success" href="{% url 'Inventario:add' row.id %}">Añadir a Carrito</a>
 
@@ -63,8 +68,10 @@ Productos
             </div>
         <hr class="dropdown-divider">
     </div>   
-            <p>No hay registros!, intente con otra identificación o revise que esté bien escrita</p>
-                <a class="btn btn-primary" href="">Volver Atrás</a>
+        <p>No hay registros!, Esto puede pasar por dos razones:</p>
+        <p>1. No existen coincidencias con los criterios de búsqueda</p>
+        <p>2. No existen Registros o no se ṕuede acceder a ellos</p>
+        <p>Si sigue viendo esta pantalla y no ha realizado ninguna consulta, contacte al proveedor del software para mayor información</p>
         {% endif %}
                 
 </td>

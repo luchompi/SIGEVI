@@ -102,7 +102,6 @@ def limpiar(request):
 
 def pagar(request):
     carrito = Carrito(request)
-    carrito.pay()
     response = HttpResponse(content_type='Application/pdf')
     d = datetime.today().strftime('%d-%m-%Y')
     response['Content-Disposition']=f'inline; filename="{d}.pdf"'
@@ -167,7 +166,7 @@ def pagar(request):
     pdf = buffer.getvalue()
     buffer.close()
     response.write(pdf)
-    
+    carrito.pay()
     return response
 
 def generar_pdf(request):
@@ -235,9 +234,4 @@ def generar_pdf(request):
     pdf = buffer.getvalue()
     buffer.close()
     response.write(pdf)
-    
     return response
-  
-  
-
-

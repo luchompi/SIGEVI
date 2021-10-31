@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    Gestión de Funcionarios
+    Gestión de Proveedores
 {% endblock title %}
 
 
@@ -12,7 +12,7 @@
  
     {% if user.is_authenticated %}
         <div class="container-fluid">
-            <h1>Detalles de Cliente {{object.nombre}} {{object.apellido}}</h1>
+            <h1>Detalles de Proveedor {{object.razonSocial}}</h1>
             <hr class="dropdown-divider">
         </div>
         {%else%}
@@ -26,9 +26,8 @@
     {% if user.is_authenticated %}
     <form method="POST">
 		{%csrf_token%}
-		<h3>Se van a eliminar los registros de {{object.nombre}} {{object.apellido}} identificado con ID {{object.identificacion}}, ¿Continuar?</h3>
+		<h3>Se van a eliminar los registros de {{object.razonSocial}} identificado con ID {{object.NIT}}, ¿Continuar?</h3>
         <div class="container-fluid">
-            {%if object%}
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -51,20 +50,17 @@
                         </tr>
                     </tbody>
             </table>
-        {%endif%}
-    </div>
+    </div>    
+		    <td><a class="btn btn-info" href="{% url 'personas:proveedoresDetalles' object.NIT %}">Regresar a Detalles</a>
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <a class="btn btn-primary" href="/personas/proveedores/">Cancelar y Regresar a Listado General</a>
+	</form>
 
     {%else%}
 
     <p>Inicie Sesión para poder ver estos Datos dando clic<strong><a href="/auth/login"> aquí</a></strong></p>
 
     {%endif%}
-		    <td><a class="btn btn-info" href="{% url 'personas:proveedoresDetalles' object.NIT %}">Regresar a Detalles</a>
-            <button class="btn btn-danger" type="submit">Eliminar</button>
-            <a class="btn btn-primary" href="/personas/proveedores/">Cancelar y Regresar a Listado General</a>
-	</form>
-
-    
 
         
 {%endblock content%}

@@ -45,7 +45,13 @@
                         <td>{{row.cantidad}}</td>
                         <td>{{row.uniades}}</td>
                         <td>{{row.precio_compra}}</td>
+                        {% if row.marca == None %}
+                        <td>N/A</td>
+                            
+                        {% else %}
                         <td>{{row.marca}}</td>
+                        {% endif %}
+                        
                         <td> 
                             <a class="btn btn-warning" href="{% url 'Inventario:productoEditar' row.id %}">Editar</a>
                             <a class="btn btn-danger" href="#">Borrar</a></td>
@@ -55,9 +61,12 @@
                     
                 </tbody>
             </table>
+               {% else %}
+                   <h3>No existen registros</h3>
+                   <p>Intente agregar uno haciendo clic en <a class="btn btn-success" href="{% url 'Inventario:productoCrear' %}">Añadir producto</a></p>
                
-               
-        {%endif%}
+            {%endif%}
+            <a class="btn btn-primary" href="{% url 'gestion:categoriaIndex' %}">Atrás</a>
     </div>
 
     {%else%}

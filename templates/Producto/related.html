@@ -23,7 +23,6 @@
     {% if user.is_authenticated %}
         
         <div class="container-fluid">
-            {%if query1%}
             <h3>Estos son todos los elementos que quizás puedan buscar</h3>
             <table class="table table-striped">
                 <thead>
@@ -43,19 +42,19 @@
                         <th scope="row">{{row.id}}</th>
                         <td>{{row.nombre}}</td>
                         <td>{{row.cantidad}}</td>
-                        <td>{{row.precio_compra}}</td>
-                        
+                        <td>{{row.precio_compra}}</td>                        
+                        {% if row.marca == None %}
+                        <td>N/A</td>
+                            
+                        {% else %}
                         <td>{{row.marca}}</td>
+                        {% endif %}
+                        <td><a class="btn btn-success" href="{% url 'Inventario:add' row.id %}">Añadir a Carrito</a></td>
                         
                     </tr>
                     {% endfor %}
-                        
-                    
                 </tbody>
             </table>
-               
-               
-        {%endif%}
     </div>
 
     {%else%}

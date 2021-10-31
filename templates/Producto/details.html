@@ -42,7 +42,12 @@
                         <td>{{object.cantidad}}</td>
                         <td>{{object.uniades}}</td>
                         <td>{{object.precio_compra}}</td>
-                        <td>{{object.marca}}</td>
+                        {% if row.marca == None %}
+                        <td>N/A</td>
+                            
+                        {% else %}
+                        <td>{{row.marca}}</td>
+                        {% endif %}
                     </tr>
                 </tbody>
             </table>

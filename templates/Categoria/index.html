@@ -7,7 +7,11 @@ Categorías
 
 
 {% block header %}
-    <h1>Listado General de Categorías</h1>
+{% if user.is_authenticated %}
+    <h1>Listado General de Categorías <a class="btn btn-success" href="{% url 'gestion:categoriaCrear' %}">Agregar Nuevo...</a> </h1>
+
+{% endif %}
+    
 {% endblock header %}
     
 
@@ -42,8 +46,8 @@ Categorías
                         <td>{{row.nombre}}</td>
                         
                         <td><a class="btn btn-info" href="{% url 'gestion:categoriaDetalle' row.id %}">Info
-                        <a class="btn btn-warning" href="{% url 'gestion:categoriaEditar' row.id %}">Editar</a>
-                        <a class="btn btn-danger" href="{% url 'gestion:categoriaEliminar' row.id %}">Eliminar</a>
+                        <a class="btn btn-warning" href="{% url 'gestion:categoriaEditar' row.id %}">Editar categoría</a>
+                        <a class="btn btn-danger" href="{% url 'gestion:categoriaEliminar' row.id %}">Eliminar categoría</a>
                         </td>
                     </tr>
                     {% endfor %}

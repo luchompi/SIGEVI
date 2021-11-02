@@ -88,14 +88,7 @@ WSGI_APPLICATION = 'SIGEVI.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'d8eh7a890heb50',
-        'USER':'qtldzvrsqvvmqm',
-        'PASSWORD':'3f331aaaa8a14dbfe0f37dea71fc0b3d4b907772c8a7966a4b16e657a2f2d43a',
-        'HOST':'ec2-52-54-237-144.compute-1.amazonaws.com',
-        'PORT':'5432',
-    }
+    
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)

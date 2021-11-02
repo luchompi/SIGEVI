@@ -89,11 +89,7 @@ WSGI_APPLICATION = 'SIGEVI.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-    #}
-    #'default':{
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'d8eh7a890heb50',
         'USER':'qtldzvrsqvvmqm',
         'PASSWORD':'3f331aaaa8a14dbfe0f37dea71fc0b3d4b907772c8a7966a4b16e657a2f2d43a',

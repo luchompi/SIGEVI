@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-hbkfxt5j4j-(&42p!xd(!lyb0n8%(&r6msja!(3n+)z1$mt%er
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shrouded-escarpment-39341.herokuapp.com']
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'bootstrap5',
     'django_bootstrap_icons',
     'crispy_forms',
@@ -93,10 +94,10 @@ DATABASES = {
     }
     #'default':{
     #    'ENGINE': 'django.db.backends.postgresql',
-    #    'NAME':'db_test',
-    #    'USER':'luis',
-    #    'PASSWORD':'L4l09599.',
-    #    'HOST':'127.0.0.1',
+    #    'NAME':'d8eh7a890heb50',
+    #    'USER':'qtldzvrsqvvmqm',
+    #    'PASSWORD':'3f331aaaa8a14dbfe0f37dea71fc0b3d4b907772c8a7966a4b16e657a2f2d43a',
+    #    'HOST':'ec2-52-54-237-144.compute-1.amazonaws.com',
     #    'PORT':'5432',
     #}
 }

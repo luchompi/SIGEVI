@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'SIGEVI.wsgi.application'
 DATABASES = {
     'default':{
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'USER': 'icqhghcjzxpkhi',
-    'NAME': 'd8ujofh2ncq6bh',
-    'PASSWORD':'a3b80edd7c86fe89c911adf1a445c002d8905c4cf7a68e83dc1e9e8bd5f0f9dd',
-    'HOST':'ec2-35-169-43-5.compute-1.amazonaws.com',
+    'USER': 'upzxtugwoujvtv',
+    'NAME': 'd8s5bcnlvobiq0',
+    'PASSWORD':'d7a66e66e671cf105ba991221d50fdd337e55ed426f2ded168b8dfde2ce5e87f',
+    'HOST':'ec2-52-200-68-5.compute-1.amazonaws.com',
     'PORT':'5432',
     }
 }
@@ -136,7 +136,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

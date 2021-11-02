@@ -1,1 +1,1 @@
-web: gunicorn SIGEVI.wsgi
+web: gunicorn SIGEVI.wsgi 

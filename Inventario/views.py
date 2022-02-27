@@ -21,8 +21,7 @@ class ProductoList(ListView):
     template_name = "Producto/index.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        consulta = self.request.GET.get('producto')
-        if consulta:
+        if consulta := self.request.GET.get('producto'):
             context["query"] = Producto.objects.filter(nombre__istartswith=consulta)
         else:
             context["query"] = Producto.objects.all()
@@ -113,9 +112,8 @@ def pagar(request):
     cantidad = []
     valor = []
     p_unitario = []
-    aux=0
-    aux1 =0
-    total =0
+    aux = 0
+    aux1 = 0
     for row in c_compra.keys():
             ide.append(c_compra[row]["producto_id"])
             nombre.append(c_compra[row]["nombre"])
@@ -133,32 +131,35 @@ def pagar(request):
     p.drawString(200,750,"FACTURA DE COMPRA")
     #render
     p.setFont("Helvetica",10,leading=None)
-    p.drawString(50,690,"Producto ") 
+    p.drawString(50,690,"Producto ")
     x =670
     for elemento in nombre:
         p.drawString(50,x,elemento)
-        x = x -10
+        x -= 10
 
     x =670
-    p.drawString(250,690,"Precio Unitario ") 
+    p.drawString(250,690,"Precio Unitario ")
     for elemento in p_unitario:
         p.drawString(250,x,elemento)
-        x = x -10
+        x -= 10
     x =670
-    p.drawString(350,690,"Cantidad") 
+    p.drawString(350,690,"Cantidad")
     for elemento in cantidad:
         p.drawString(350,x,elemento)
-        x = x -10
+        x -= 10
     x =670
-    p.drawString(450,690,"Subtotal") 
+    p.drawString(450,690,"Subtotal")
     for elemento in valor:
         p.drawString(450,x,elemento)
-        x = x -10  
-    for key, value in request.session["carrito"].items():
-        total += int(value["acmuluado"])
+        x -= 10
+    total = sum(
+        int(value["acmuluado"])
+        for key, value in request.session["carrito"].items()
+    )
+
     p.setFont("Helvetica",15,leading=None)
     p.drawString(50,50,"Total")
-    p.drawString(400,50,"$") 
+    p.drawString(400,50,"$")
     p.drawString(415,50,str(total))
     p.setTitle(f'Report on {d}')
     p.showPage()
@@ -181,9 +182,8 @@ def generar_pdf(request):
     cantidad = []
     valor = []
     p_unitario = []
-    aux=0
-    aux1 =0
-    total =0
+    aux = 0
+    aux1 = 0
     for row in c_compra.keys():
             ide.append(c_compra[row]["producto_id"])
             nombre.append(c_compra[row]["nombre"])
@@ -201,32 +201,35 @@ def generar_pdf(request):
     p.drawString(200,750,"FACTURA DE COMPRA")
     #render
     p.setFont("Helvetica",10,leading=None)
-    p.drawString(50,690,"Producto ") 
+    p.drawString(50,690,"Producto ")
     x =670
     for elemento in nombre:
         p.drawString(50,x,elemento)
-        x = x -10
+        x -= 10
 
     x =670
-    p.drawString(250,690,"Precio Unitario ") 
+    p.drawString(250,690,"Precio Unitario ")
     for elemento in p_unitario:
         p.drawString(250,x,elemento)
-        x = x -10
+        x -= 10
     x =670
-    p.drawString(350,690,"Cantidad") 
+    p.drawString(350,690,"Cantidad")
     for elemento in cantidad:
         p.drawString(350,x,elemento)
-        x = x -10
+        x -= 10
     x =670
-    p.drawString(450,690,"Subtotal") 
+    p.drawString(450,690,"Subtotal")
     for elemento in valor:
         p.drawString(450,x,elemento)
-        x = x -10  
-    for key, value in request.session["carrito"].items():
-        total += int(value["acmuluado"])
+        x -= 10
+    total = sum(
+        int(value["acmuluado"])
+        for key, value in request.session["carrito"].items()
+    )
+
     p.setFont("Helvetica",15,leading=None)
     p.drawString(50,50,"Total")
-    p.drawString(400,50,"$") 
+    p.drawString(400,50,"$")
     p.drawString(415,50,str(total))
     p.setTitle(f'Report on {d}')
     p.showPage()

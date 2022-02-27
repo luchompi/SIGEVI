@@ -5,12 +5,11 @@ class Carrito:
     def __init__(self,request):
         self.resquest = request
         self.session = request.session
-        carrito = self.session.get("carrito")
-        if not carrito:
+        if carrito := self.session.get("carrito"):
+            self.carrito = carrito
+        else:
             self.session["carrito"] = {}
             self.carrito = self.session["carrito"]
-        else:
-            self.carrito = carrito
             
     def add(self,producto):
         id = str(producto.pk)

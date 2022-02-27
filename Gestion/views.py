@@ -12,8 +12,7 @@ class MarcaList(ListView):
     template_name = "Marca/index.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        consulta = self.request.GET.get('marca')
-        if consulta:
+        if consulta := self.request.GET.get('marca'):
             context["query"] = Marca.objects.filter(nombre__istartswith=consulta)
         else:
             context["query"]= Marca.objects.all()
@@ -54,8 +53,7 @@ class CategoriaList(ListView):
     template_name = "Categoria/index.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        consulta=self.request.GET.get('categoria')
-        if consulta:
+        if consulta := self.request.GET.get('categoria'):
             context["query"] = Categoria.objects.filter(nombre__istartswith=consulta)
         else:
             context["query"] = Categoria.objects.all()
@@ -82,11 +80,9 @@ class CategoriaUpdate(UpdateView):
 def CategoriaDetail(request,pk):
     query = Categoria.objects.get(id=pk)
     query1 = Producto.objects.filter(categoria__id=pk)
-    if query:
-        return render(request,'Categoria/details.html',context={'query':query,'query1':query1})
-    else:
+    if not query:
         query = Categoria.objects.get(nombre=query1)
-        return render(request,'Categoria/details.html',context={'query':query,'query1':query1})
+    return render(request,'Categoria/details.html',context={'query':query,'query1':query1})
 
 
 
